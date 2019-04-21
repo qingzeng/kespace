@@ -459,7 +459,7 @@ class TableList extends PureComponent {
     e.preventDefault();
 
     const { dispatch, form } = this.props;
-    
+
     form.validateFields((err, fieldsValue) => {
       if (err) return;
 
@@ -476,15 +476,13 @@ class TableList extends PureComponent {
         type: 'coupon/fetch',
         payload: values,
       });
-
     });
   };
 
   handleModalVisible = flag => {
     //切换路由。
-    
-    router.push('/market/couponCreat');
 
+    router.push('/market/couponCreat');
   };
 
   handleUpdateModalVisible = (flag, record) => {
@@ -578,8 +576,8 @@ class TableList extends PureComponent {
       loading,
     } = this.props;
 
-    console.log('data',data);
-    console.log("loading",loading);
+    console.log('data', data);
+    console.log('loading', loading);
 
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
     const menu = (

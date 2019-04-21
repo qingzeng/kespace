@@ -165,10 +165,7 @@ class AdvancedForm extends PureComponent {
     const { width } = this.state;
 
     return (
-      <PageHeaderWrapper
-        title="优惠卷详情页"
-        wrapperClassName={styles.advancedForm}
-      >
+      <PageHeaderWrapper title="优惠卷详情页" wrapperClassName={styles.advancedForm}>
         <Card title="发送数据" bordered={false}>
           <Row>
             <Col sm={8} xs={24}>
@@ -196,24 +193,14 @@ class AdvancedForm extends PureComponent {
                 <Form.Item label={fieldLabels.url}>
                   {getFieldDecorator('url', {
                     rules: [{ required: true, message: '请选择' }],
-                  })(
-                    <Input
-                      style={{ width: '100%' }}
-                      placeholder="请输入"
-                    />
-                  )}
+                  })(<Input style={{ width: '100%' }} placeholder="请输入" />)}
                 </Form.Item>
               </Col>
               <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
                 <Form.Item label={fieldLabels.owner}>
                   {getFieldDecorator('owner', {
                     rules: [{ required: true, message: '请选择管理员' }],
-                  })(
-                    <Input
-                      style={{ width: '100%' }}
-                      placeholder="请输入"
-                    />
-                  )}
+                  })(<Input style={{ width: '100%' }} placeholder="请输入" />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -304,18 +291,14 @@ class AdvancedForm extends PureComponent {
                 <Form.Item label={fieldLabels.dateRange2}>
                   {getFieldDecorator('dateRange2', {
                     rules: [{ required: true, message: '请输入' }],
-                  })(
-                    <DatePicker placeholder="请选择注册时间" />
-                  )}
+                  })(<DatePicker placeholder="请选择注册时间" />)}
                 </Form.Item>
               </Col>
               <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10 }} md={{ span: 24 }} sm={24}>
                 <Form.Item label={fieldLabels.type2}>
                   {getFieldDecorator('type2', {
                     rules: [{ required: true, message: '请选择仓库类型' }],
-                  })(
-                    <DatePicker placeholder="上次登陆时间" />
-                  )}
+                  })(<DatePicker placeholder="上次登陆时间" />)}
                 </Form.Item>
               </Col>
             </Row>
@@ -331,7 +314,7 @@ class AdvancedForm extends PureComponent {
           <Button type="primary" onClick={this.validate} loading={submitting}>
             提交
           </Button>
-          <Button type="primary" onClick={()=>history.go(-1)}>
+          <Button type="primary" onClick={() => history.go(-1)}>
             返回
           </Button>
         </FooterToolbar>

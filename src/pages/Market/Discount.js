@@ -310,13 +310,13 @@ class TableList extends PureComponent {
       coupon: '8折优惠',
     },
     {
-        key: 2,
-        name:'优惠',
-        time:'20190416',
-        total:'120',
-        discount:'8.5',
-        coupon:'8.5折优惠',
-    }
+      key: 2,
+      name: '优惠',
+      time: '20190416',
+      total: '120',
+      discount: '8.5',
+      coupon: '8.5折优惠',
+    },
   ];
 
   columns = [
@@ -333,14 +333,14 @@ class TableList extends PureComponent {
       title: '总/每日',
       dataIndex: 'total',
       sorter: true,
-    //   render: val => `${val} 万`,
+      //   render: val => `${val} 万`,
       needTotal: true,
     },
     {
       title: '年/月(费折扣价格)',
       dataIndex: 'discount',
       sorter: true,
-    //   render: val => `${val} 万`,
+      //   render: val => `${val} 万`,
       // mark to display a total number
       needTotal: true,
     },
@@ -348,7 +348,7 @@ class TableList extends PureComponent {
       title: '能否使用优惠卷',
       dataIndex: 'coupon',
       sorter: true,
-    // render: val => `${val} 万`,
+      // render: val => `${val} 万`,
       needTotal: true,
     },
     {
@@ -474,7 +474,6 @@ class TableList extends PureComponent {
   };
 
   handleModalVisible = flag => {
-    
     router.push('/market/discountCreat');
   };
 
@@ -638,7 +637,7 @@ class TableList extends PureComponent {
 
   render() {
     const {
-        rule: { data },
+      rule: { data },
       loading,
     } = this.props;
     const { selectedRows, modalVisible, updateModalVisible, stepFormValues } = this.state;
@@ -658,7 +657,7 @@ class TableList extends PureComponent {
       handleUpdate: this.handleUpdate,
     };
     return (
-      <PageHeaderWrapper title='优惠'>
+      <PageHeaderWrapper title="优惠">
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>{this.renderForm()}</div>

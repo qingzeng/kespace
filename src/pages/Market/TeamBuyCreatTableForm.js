@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
-import { Table, Button, Input, message, Col, Row } from 'antd';
+import { Table, Button, Input, message,Row,Col } from 'antd';
 import isEqual from 'lodash/isEqual';
-import styles from './style.less';
+import styles from './TeamBuyCreatTableForm.less';
 
 class TableForm extends PureComponent {
   index = 1;
@@ -34,15 +34,13 @@ class TableForm extends PureComponent {
     return (newData || data).filter(item => item.key === key)[0];
   }
 
-  // 转换到可编辑的模式
   toggleEditable = (e, key) => {
     e.preventDefault();
-    console.log('toggleEditable');
-
     const { data } = this.state;
     const newData = data.map(item => ({ ...item }));
     const target = this.getRowByKey(key, newData);
     if (target) {
+      // 进入编辑状态时保存原始数据
       if (!target.editable) {
         this.cacheOriginData[key] = { ...target };
       }
@@ -54,7 +52,6 @@ class TableForm extends PureComponent {
   newMember = () => {
     const { data } = this.state;
     const newData = data.map(item => ({ ...item }));
-
     newData.push({
       key: `${this.index}`,
       num: '',
@@ -77,17 +74,13 @@ class TableForm extends PureComponent {
     onChange(newData);
   }
 
-  handleKeyPress(e, key, text) {
-    // if (e.key === 'Enter') {
-    console.log('handleKeyPress', e, key, text);
-    console.log('text', text);
-
-    this.saveRow(e, key);
+  handleKeyPress(e, key) {
+    if (e.key === 'Enter') {
+      this.saveRow(e, key);
+    }
   }
 
-  handleFieldChange(e, fieldName, key, text) {
-    console.log('handleFieldChange', e, fieldName, key, text);
-
+  handleFieldChange(e, fieldName, key) {
     const { data } = this.state;
     const newData = data.map(item => ({ ...item }));
     const target = this.getRowByKey(key, newData);
@@ -97,8 +90,13 @@ class TableForm extends PureComponent {
     }
   }
 
+  saveChange() {
+    const { onChange } = this.props;
+    const { data } = this.state;
+    onChange(data);
+  }
+
   saveRow(e, key) {
-    // onfocus,onblur
     e.persist();
     this.setState({
       loading: true,
@@ -143,127 +141,95 @@ class TableForm extends PureComponent {
     this.clickedCancel = false;
   }
 
-  saveChange(key, name, text) {
-    console.log('saveChange');
-
-    const { onChange } = this.props;
-    const { data } = this.state;
-    const tempData = data;
-    tempData[key][name] = text;
-
-    this.setState({ data: tempData });
-
-    onChange(data);
-  }
-
   render() {
     const columns = [
-
       {
         title: '组团人数',
         dataIndex: 'num',
         key: 'num',
-        width: '19%',
+        width: '15%',
         render: (text, record) => {
-          // 保存最新的值
-          // this.saveChange(record.key, 'num', text);
           return (
-            // <Input
-            //   value={text}
-            //   onChange={e => this.handleFieldChange(e, 'yearVIPandroid', record.key)}
-            //   onKeyUp={()=> this.saveChange(record.key,'num',text)}
-            //   placeholder="VIP年价(安卓)"
-            // />
             <Input
               value={text}
-              onChange={e => this.handleFieldChange(e, 'yearVIPandroid', record.key)}
+              autoFocus
+              onChange={e => this.handleFieldChange(e, 'num', record.key)}
               onKeyPress={e => this.handleKeyPress(e, record.key)}
-              placeholder="VIP年价(安卓)"
+              onKeyUp={() => this.saveChange()}
+              placeholder="成员姓名"
             />
-
           );
         },
       },
       {
-        title: 'VIP年价(Android)',
+        title: 'VIP年价格(android)',
         dataIndex: 'yearVIPandroid',
         key: 'yearVIPandroid',
-        width: '19%',
+        width: '20%',
         render: (text, record) => {
-          if (true) {
-            return (
-              <Input
-                value={text}
-                onChange={e => this.handleFieldChange(e, 'yearVIPandroid', record.key)}
-                onKeyPress={e => this.handleKeyPress(e, record.key)}
-                placeholder="VIP年价(安卓)"
-              />
-            );
-          }
-          return text;
+          return (
+            <Input
+              value={text}
+              onChange={e => this.handleFieldChange(e, 'yearVIPandroid', record.key)}
+              onKeyPress={e => this.handleKeyPress(e, record.key)}
+              onKeyUp={() => this.saveChange()}
+              placeholder="工号"
+            />
+          );
         },
       },
       {
         title: 'VIP年价(ios)',
         dataIndex: 'yearVIPios',
         key: 'yearVIPios',
-        width: '19%',
+        width: '20%',
         render: (text, record) => {
-          if (true) {
-            return (
-              <Input
-                value={text}
-                onChange={e => this.handleFieldChange(e, 'yearVIPios', record.key, text)}
-                onKeyPress={e => this.handleKeyPress(e, record.key)}
-                placeholder="VIP年价(ios)"
-              />
-            );
-          }
-          return text;
+          return (
+            <Input
+              value={text}
+              onChange={e => this.handleFieldChange(e, 'yearVIPios', record.key)}
+              onKeyPress={e => this.handleKeyPress(e, record.key)}
+              placeholder="所属部门"
+            />
+          );
         },
       },
       {
-        title: 'VIP月价(Android)',
+        title: 'VIP月价(android)',
         dataIndex: 'monthVIPandroid',
         key: 'monthVIPandroid',
-        width: '19%',
+        width: '20%',
         render: (text, record) => {
-          if (true) {
-            return (
-              <Input
-                value={text}
-                onChange={e => this.handleFieldChange(e, 'monthVIPandroid', record.key)}
-                onKeyPress={e => this.handleKeyPress(e, record.key)}
-                placeholder="VIP月价(安卓)"
-              />
-            );
-          }
-          return text;
+          return (
+            <Input
+              value={text}
+              onChange={e => this.handleFieldChange(e, 'monthVIPandroid', record.key)}
+              onKeyPress={e => this.handleKeyPress(e, record.key)}
+              onKeyUp={() => this.saveChange()}
+              placeholder="工号"
+            />
+          );
         },
       },
       {
         title: 'VIP月价(ios)',
         dataIndex: 'monthVIPios',
         key: 'monthVIPios',
-        width: '19%',
+        width: '20%',
         render: (text, record) => {
-          if (true) {
-            return (
-              <Input
-                value={text}
-                onChange={e => this.handleFieldChange(e, 'monthVIPios', record.key)}
-                onKeyPress={e => this.handleKeyPress(e, record.key)}
-                placeholder="VIP月价(ios)"
-              />
-            );
-          }
-          return text;
+          return (
+            <Input
+              value={text}
+              onChange={e => this.handleFieldChange(e, 'monthVIPios', record.key)}
+              onKeyPress={e => this.handleKeyPress(e, record.key)}
+              placeholder="所属部门"
+            />
+          );
         },
       },
       {
-        title: '  ',
+        title: '操作',
         key: 'action',
-        width: '5%',
         render: (text, record) => {
           const { loading } = this.state;
           if (!!record.editable && loading) {
@@ -278,40 +244,6 @@ class TableForm extends PureComponent {
           }
 
           return <Button onClick={() => this.remove(record.key)} icon="minus" />;
-
-          // if (record.editable) {
-          //   return <Button onClick={e => this.saveRow(e, record.key)} icon="save" />;
-          // }
-
-          // if (record.editable) {
-          //   if (record.isNew) {
-          //     return (
-          //       <span>
-          //         <a onClick={e => this.saveRow(e, record.key)}>添加</a>
-          //         <Divider type="vertical" />
-          //         <Popconfirm title="是否要删除此行？" onConfirm={() => this.remove(record.key)}>
-          //           <a>删除</a>
-          //         </Popconfirm>
-          //       </span>
-          //     );
-          //   }
-          //   return (
-          //     <span>
-          //       <a onClick={e => this.saveRow(e, record.key)}>保存</a>
-          //       <Divider type="vertical" />
-          //       <a onClick={e => this.cancel(e, record.key)}>取消</a>
-          //     </span>
-          //   );
-          // }
-          // return (
-          //   <span>
-          //     <a onClick={e => this.toggleEditable(e, record.key)}>编辑</a>
-          //     <Divider type="vertical" />
-          //     <Popconfirm title="是否要删除此行？" onConfirm={() => this.remove(record.key)}>
-          //       <a>删除</a>
-          //     </Popconfirm>
-          //   </span>
-          // );
         },
       },
     ];
@@ -332,14 +264,6 @@ class TableForm extends PureComponent {
               pagination={false}
               rowClassName={record => (record.editable ? styles.editable : '')}
             />
-            {/* <Button
-              style={{ width: '100%', marginTop: 16, marginBottom: 8 }}
-              type="dashed"
-              onClick={this.newMember}
-              icon="plus"
-            >
-              新增团购
-            </Button> */}
           </Col>
         </Row>
       </Fragment>

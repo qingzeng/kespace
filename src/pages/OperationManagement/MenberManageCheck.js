@@ -149,7 +149,11 @@ class BasicProfile extends Component {
     return (
       <PageHeaderWrapper title="会员管理查看" loading={loading}>
         <Card bordered={false}>
-          <img alt="" style={{marginBottom:'20px', width: '104px',height:'104px',textAlign:'Center'}} src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png" />
+          <img
+            alt=""
+            style={{ marginBottom: '20px', width: '104px', height: '104px', textAlign: 'Center' }}
+            src="https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png"
+          />
           <DescriptionList size="large" title="用户信息" style={{ marginBottom: 32 }}>
             <Description term="姓名">{application.id}</Description>
             <Description term="昵称">{application.status}</Description>

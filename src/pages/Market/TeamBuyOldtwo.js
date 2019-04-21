@@ -654,9 +654,9 @@ class TableList extends PureComponent {
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             <div className={styles.tableListOperator} />
             <a href="/market/teamBuyDetail">
-            <Button icon="plus" type="primary">
-              新建 
-            </Button>
+              <Button icon="plus" type="primary">
+                新建
+              </Button>
             </a>
             {selectedRows.length > 0 && (
               <span>

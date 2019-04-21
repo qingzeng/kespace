@@ -46,7 +46,7 @@ class BasicForms extends PureComponent {
       form: { getFieldDecorator, getFieldValue },
     } = this.props;
     const { history } = this.props;
-    
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -159,7 +159,6 @@ class BasicForms extends PureComponent {
                 ],
               })(<Input placeholder={formatMessage({ id: 'form.title.placeholder' })} />)}
             </FormItem>
-
 
             <FormItem {...formItemLayout} label={<FormattedMessage id="detail.activeName" />}>
               {getFieldDecorator('title', {

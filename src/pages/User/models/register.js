@@ -3,7 +3,7 @@ import { setAuthority } from '@/utils/authority';
 import { reloadAuthorized } from '@/utils/Authorized';
 
 export default {
-  namespace: 'register',
+  namespace: 'registers',
 
   state: {
     status: undefined,
@@ -11,6 +11,7 @@ export default {
 
   effects: {
     *submit({ payload }, { call, put }) {
+      console.log('register');
       const response = yield call(fakeRegister, payload);
       yield put({
         type: 'registerHandle',

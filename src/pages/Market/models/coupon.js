@@ -14,7 +14,7 @@ export default {
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(querycoupon, payload);
-      console.log("response",response);
+      console.log('response', response);
       yield put({
         type: 'save',
         payload: response,

@@ -17,17 +17,11 @@ import {
 } from 'antd';
 import { withRouter } from 'react-router-dom';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
-// import FooterToolbar from '@/components/FooterToolbar';
 import TableForm from './TeamBuyCreatTableForm';
-// import TableForm from './TeamBuyCreatTableTest';
 import styles from './TeamBuyCreat.less';
 
 
 const FormItem = Form.Item;
-// const { Option } = Select;
-// const { RangePicker } = DatePicker;
-// const { TextArea } = Input;
-
 
 const tableData = [
   {
@@ -39,27 +33,6 @@ const tableData = [
     monthVIPios: '100',
   },
 ];
-
-// const tableData = [
-//   {
-//     key: '1',
-//     workId: '00001',
-//     name: 'John Brown',
-//     department: 'New York No. 1 Lake Park',
-//   },
-//   {
-//     key: '2',
-//     workId: '00002',
-//     name: 'Jim Green',
-//     department: 'London No. 1 Lake Park',
-//   },
-//   {
-//     key: '3',
-//     workId: '00003',
-//     name: 'Joe Black',
-//     department: 'Sidney No. 1 Lake Park',
-//   },
-// ];
 
 const fieldLabels = {
   activeName: '活动名称',
@@ -196,7 +169,7 @@ class BasicForms extends PureComponent {
   render() {
     const { submitting } = this.props;
     const {
-      form: { getFieldDecorator},
+      form: { getFieldDecorator },
     } = this.props;
     const { history } = this.props;
 
@@ -211,7 +184,6 @@ class BasicForms extends PureComponent {
       },
     };
 
-
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? 'loading' : 'plus'} />
@@ -220,7 +192,7 @@ class BasicForms extends PureComponent {
     );
 
     const imageUrl = this.state.imageUrl;
-
+    
     return (
       <PageHeaderWrapper title="创建团购">
         <Card bordered={false}>

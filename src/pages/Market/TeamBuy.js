@@ -466,8 +466,7 @@ class TableList extends PureComponent {
     //   modalVisible: !!flag,
     // });
 
-   router.push("/market/teamBuyCreat");
-
+    router.push('/market/teamBuyCreat');
   };
 
   handleUpdateModalVisible = (flag, record) => {
@@ -655,10 +654,10 @@ class TableList extends PureComponent {
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>{this.renderForm()}</div>
             <div className={styles.tableListOperator}>
-                <Button icon="plus" type="primary"  onClick={() => this.handleModalVisible(true)}>
-                  创建
-                </Button>
-              
+              <Button icon="plus" type="primary" onClick={() => this.handleModalVisible(true)}>
+                创建
+              </Button>
+
               {selectedRows.length > 0 && (
                 <span>
                   <Button>批量操作</Button>

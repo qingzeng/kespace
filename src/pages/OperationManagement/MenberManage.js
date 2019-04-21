@@ -481,9 +481,9 @@ class TableList extends PureComponent {
   };
 
   handleUpdateModalVisible = (flag, record) => {
-
-    router.push("/operationManagement/menberManageCheck");
     
+    router.push("/operationManagement/menberManageCheck");
+
   };
 
   handleAdd = fields => {

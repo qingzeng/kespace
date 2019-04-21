@@ -86,4 +86,3 @@ class Center extends PureComponent {
 }
 
 export default Center;
-

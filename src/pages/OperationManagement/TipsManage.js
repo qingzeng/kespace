@@ -1,6 +1,5 @@
 import React, { PureComponent, Fragment } from 'react';
 import { connect } from 'dva';
-import moment from 'moment';
 import router from 'umi/router';
 import {
   Row,
@@ -13,7 +12,6 @@ import {
   Button,
   Dropdown,
   Menu,
-  InputNumber,
   DatePicker,
   Modal,
   message,

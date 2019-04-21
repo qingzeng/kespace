@@ -34,8 +34,8 @@ const passwordProgressMap = {
   poor: 'exception',
 };
 
-@connect(({ register, loading }) => ({
-  register,
+@connect(({ registers, loading }) => ({
+  registers,
   submitting: loading.effects['register/submit'],
 }))
 @Form.create()
@@ -49,9 +49,9 @@ class Register extends Component {
   };
 
   componentDidUpdate() {
-    const { form, register } = this.props;
+    const { form, registers } = this.props;
     const account = form.getFieldValue('mail');
-    if (register.status === 'ok') {
+    if (registers.status === 'ok') {
       router.push({
         pathname: '/user/register-result',
         state: {
@@ -96,8 +96,9 @@ class Register extends Component {
     form.validateFields({ force: true }, (err, values) => {
       if (!err) {
         const { prefix } = this.state;
+        console.log('handleSubmit');
         dispatch({
-          type: 'register/submit',
+          type: 'registers/submit',
           payload: {
             ...values,
             prefix,

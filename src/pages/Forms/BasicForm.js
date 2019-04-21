@@ -1,5 +1,5 @@
 import React from 'react';
-import { Form, Row, Col, Input, Button, Icon, Table, Divider} from 'antd';
+import { Form, Row, Col, Input, Button, Icon, Table, Divider } from 'antd';
 
 const data = [
   {

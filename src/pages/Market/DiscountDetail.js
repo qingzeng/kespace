@@ -59,7 +59,6 @@ const residences = [
 ];
 
 class RegistrationForm extends React.Component {
-
   state = {
     confirmDirty: false,
     autoCompleteResult: [],
@@ -110,8 +109,8 @@ class RegistrationForm extends React.Component {
   render() {
     const { getFieldDecorator } = this.props.form;
     const { autoCompleteResult } = this.state;
-    const {history} =this.props;
-    
+    const { history } = this.props;
+
     const formItemLayout = {
       labelCol: {
         xs: { span: 24 },
@@ -272,7 +271,12 @@ class RegistrationForm extends React.Component {
             <a href="/market/discount">返回</a>
           </Button> */}
           <Divider type="vertical" />
-          <Button type="primary" onClick={() =>{ history.go(-1)}}>
+          <Button
+            type="primary"
+            onClick={() => {
+              history.go(-1);
+            }}
+          >
             返回
           </Button>
         </Form.Item>

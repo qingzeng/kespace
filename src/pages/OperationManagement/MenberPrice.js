@@ -23,19 +23,19 @@ const { Option } = Select;
 const { RangePicker } = DatePicker;
 
 const fieldLabels = {
-//   name: '仓库名',
-//   url: '仓库域名',
-//   owner: '仓库管理员',
-//   approver: '审批人',
-//   dateRange: '生效日期',
-//   type: '仓库类型',
-//   name2: '定金金额',
-//   url2: '团购时间',
-//   owner2: '尾款时间',
-//   approver2: '团购人数',
-//   dateRange2: '团购价格',
-//   menberLimit3: '砍价限定人数',
-//   bargainNum3: '砍价金额',
+  //   name: '仓库名',
+  //   url: '仓库域名',
+  //   owner: '仓库管理员',
+  //   approver: '审批人',
+  //   dateRange: '生效日期',
+  //   type: '仓库类型',
+  //   name2: '定金金额',
+  //   url2: '团购时间',
+  //   owner2: '尾款时间',
+  //   approver2: '团购人数',
+  //   dateRange2: '团购价格',
+  //   menberLimit3: '砍价限定人数',
+  //   bargainNum3: '砍价金额',
 
   name: '仓库名',
   url: '仓库域名',
@@ -152,7 +152,7 @@ class AdvancedForm extends PureComponent {
       dispatch,
     } = this.props;
     validateFieldsAndScroll((error, values) => {
-        console.log("values",values);
+      console.log('values', values);
       if (!error) {
         // submit the values
         dispatch({
